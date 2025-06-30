@@ -1,1 +1,2 @@
-# SmartBoard
+# SmartTable
+

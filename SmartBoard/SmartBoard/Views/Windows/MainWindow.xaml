@@ -1,0 +1,144 @@
+﻿<ui:FluentWindow
+    x:Class="SmartBoard.Views.Windows.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:SmartBoard.Views.model"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    Title="{Binding ViewModel.ApplicationTitle, Mode=OneWay}"
+    Width="1100"
+    Height="650"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    ExtendsContentIntoTitleBar="True"
+    WindowBackdropType="Mica"
+    WindowCornerPreference="Round"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d">
+    <ui:FluentWindow.InputBindings>
+        <KeyBinding
+            Key="F"
+            Command="{Binding ElementName=AutoSuggestBox, Path=FocusCommand}"
+            Modifiers="Control" />
+    </ui:FluentWindow.InputBindings>
+
+    <Grid>
+        <ui:TitleBar
+            x:Name="TitleBar"
+            Title="{Binding ViewModel.ApplicationTitle}"
+            Grid.Row="0"
+            Icon="{ui:SymbolIcon Symbol=Apps24}"
+            CloseWindowByDoubleClickOnIcon="True">
+        </ui:TitleBar>
+
+        <ui:NavigationView
+            x:Name="RootNavigation"
+            Padding="42,0,42,0"
+            BreadcrumbBar="{Binding ElementName=BreadcrumbBar}"
+            FooterMenuItemsSource="{Binding ViewModel.FooterMenuItems, Mode=OneWay}"
+            FrameMargin="0"
+            IsBackButtonVisible="Visible"
+            IsPaneToggleVisible="True"
+            MenuItemsSource="{Binding ViewModel.MenuItems, Mode=OneWay}"
+            OpenPaneLength="310"
+            PaneDisplayMode="Left"
+            TitleBar="{Binding ElementName=TitleBar, Mode=OneWay}">
+            <ui:NavigationView.AutoSuggestBox>
+                <ui:AutoSuggestBox x:Name="AutoSuggestBox" PlaceholderText="Search">
+                    <ui:AutoSuggestBox.Icon>
+                        <ui:IconSourceElement>
+                            <ui:SymbolIconSource Symbol="Search24" />
+                        </ui:IconSourceElement>
+                    </ui:AutoSuggestBox.Icon>
+                </ui:AutoSuggestBox>
+            </ui:NavigationView.AutoSuggestBox>
+            <ui:NavigationView.MenuItems>
+                <ui:NavigationViewItem Content="Задачи">
+                    <ui:NavigationViewItem.Icon>
+                        <ui:SymbolIcon Symbol="GlanceDefault12" />
+                    </ui:NavigationViewItem.Icon>
+                    <ui:NavigationViewItem.MenuItems>
+                        <StackPanel
+                                x:Name="PAnel"
+                                Orientation="Vertical" Width="276">
+                            <local:TaskCard 
+                Title="Приложение крашится при входе пользователя" 
+                Description="После ввода логина и пароля происходит crash с ошибкой NullPointerException в AuthViewModel. Не воспроизводится локально, только на Android 12+. Требуется анализ логов Firebase."
+                TaskType="Bug"
+                Priority="3.6"
+                Assignee="Иван Петров"
+                Deadline="2025-04-10"
+                MouseLeftButtonDown="TaskCard_MouseLeftButtonDown" />
+
+                            <local:TaskCard 
+                Title="Добавить переключатель темы (Dark/Light)" 
+                Description="В настройках добавить возможность выбора между светлой и тёмной темой. Тему сохранять в SharedPreferences."
+                TaskType="Feature"
+                Priority="3.8"
+                Assignee="Ольга Смирнова"
+                Deadline="2025-04-15"
+                MouseLeftButtonDown="TaskCard_MouseLeftButtonDown" />
+
+                            <local:TaskCard 
+                Title="Рефакторинг модуля авторизации" 
+                Description="Убрать дублирование кода, разбить AuthManager на интерфейсы, вынести бизнес-логику из Activity. Проверить утечки памяти через LeakCanary."
+                TaskType="Technical Task"
+                Priority="4.2"
+                Assignee="Александр Иванов"
+                Deadline="2025-04-20"
+                MouseLeftButtonDown="TaskCard_MouseLeftButtonDown" />
+
+                            <local:TaskCard 
+                Title="Обновить документацию по REST API" 
+                Description="Добавить описание новых эндпоинтов: /v2/user/profile и /v2/notifications. Обновить примеры запросов и ответов в Swagger."
+                TaskType="Documentation"
+                Priority="2"
+                Assignee="Елена Кузнецова"
+                Deadline="2025-04-18"
+                MouseLeftButtonDown="TaskCard_MouseLeftButtonDown" />
+
+                            <local:TaskCard 
+                Title="Написать unit-тесты для CalculatorService" 
+                Description="Тестирование всех операций: сложение, вычитание, деление, умножение. Убедиться в покрытии всех граничных случаев."
+                TaskType="Testing"
+                Priority="3.8"
+                Assignee="Дмитрий Орлов"
+                Deadline="2025-04-22"
+                MouseLeftButtonDown="TaskCard_MouseLeftButtonDown" />
+
+                            <local:TaskCard 
+                Title="Ежедневный Standup" 
+                Description="Ежедневная встреча команды в 10:00 по МСК. Формат: что сделал, что делаю, какие блокеры."
+                TaskType="Meeting"
+                Priority="1"
+                Assignee="Вся команда"
+                Deadline="2025-04-20"
+                MouseLeftButtonDown="TaskCard_MouseLeftButtonDown" />
+
+                            <local:TaskCard 
+                Title="Оптимизация загрузки изображений" 
+                Description="Изображения в RecyclerView грузятся медленно, особенно на слабом интернете. Нужно использовать кэширование Glide + placeholder. Измерить время загрузки до и после."
+                TaskType="Performance"
+                Priority="3.5"
+                Assignee="Максим Лебедев"
+                Deadline="2025-04-25"
+                MouseLeftButtonDown="TaskCard_MouseLeftButtonDown" />
+
+                            <local:TaskCard 
+                Title="Добавить поддержку испанского языка" 
+                Description="Перевести все экраны, кнопки, сообщения. Проверить корректность отображения на устройствах с locale=es_ES. Добавить язык в настройки приложения."
+                TaskType="Localization"
+                Priority="4"
+                Assignee="Анастасия Романова"
+                Deadline="2025-04-30"
+                MouseLeftButtonDown="TaskCard_MouseLeftButtonDown" />
+                        </StackPanel>
+                    </ui:NavigationViewItem.MenuItems>
+                </ui:NavigationViewItem>
+            </ui:NavigationView.MenuItems>
+
+        </ui:NavigationView>
+
+    </Grid>
+</ui:FluentWindow>

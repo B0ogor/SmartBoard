@@ -1,0 +1,225 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{567AB3B4-92C7-4A9D-A565-087850C19AF8}|SmartBoard\\SmartBoard.csproj|c:\\users\\b0ogor\\documents\\smartboard\\smartboard\\views\\pages\\homeboardpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{567AB3B4-92C7-4A9D-A565-087850C19AF8}|SmartBoard\\SmartBoard.csproj|solutionrelative:smartboard\\views\\pages\\homeboardpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{567AB3B4-92C7-4A9D-A565-087850C19AF8}|SmartBoard\\SmartBoard.csproj|c:\\users\\b0ogor\\documents\\smartboard\\smartboard\\views\\pages\\homeboardpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{567AB3B4-92C7-4A9D-A565-087850C19AF8}|SmartBoard\\SmartBoard.csproj|solutionrelative:smartboard\\views\\pages\\homeboardpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{567AB3B4-92C7-4A9D-A565-087850C19AF8}|SmartBoard\\SmartBoard.csproj|c:\\users\\b0ogor\\documents\\smartboard\\smartboard\\viewmodels\\pages\\profileveiwmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{567AB3B4-92C7-4A9D-A565-087850C19AF8}|SmartBoard\\SmartBoard.csproj|solutionrelative:smartboard\\viewmodels\\pages\\profileveiwmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{567AB3B4-92C7-4A9D-A565-087850C19AF8}|SmartBoard\\SmartBoard.csproj|c:\\users\\b0ogor\\documents\\smartboard\\smartboard\\logic\\workspacemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{567AB3B4-92C7-4A9D-A565-087850C19AF8}|SmartBoard\\SmartBoard.csproj|solutionrelative:smartboard\\logic\\workspacemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{567AB3B4-92C7-4A9D-A565-087850C19AF8}|SmartBoard\\SmartBoard.csproj|c:\\users\\b0ogor\\documents\\smartboard\\smartboard\\views\\model\\taskcard.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{567AB3B4-92C7-4A9D-A565-087850C19AF8}|SmartBoard\\SmartBoard.csproj|solutionrelative:smartboard\\views\\model\\taskcard.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{567AB3B4-92C7-4A9D-A565-087850C19AF8}|SmartBoard\\SmartBoard.csproj|c:\\users\\b0ogor\\documents\\smartboard\\smartboard\\views\\model\\taskcard.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{567AB3B4-92C7-4A9D-A565-087850C19AF8}|SmartBoard\\SmartBoard.csproj|solutionrelative:smartboard\\views\\model\\taskcard.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{567AB3B4-92C7-4A9D-A565-087850C19AF8}|SmartBoard\\SmartBoard.csproj|c:\\users\\b0ogor\\documents\\smartboard\\smartboard\\views\\windows\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{567AB3B4-92C7-4A9D-A565-087850C19AF8}|SmartBoard\\SmartBoard.csproj|solutionrelative:smartboard\\views\\windows\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{567AB3B4-92C7-4A9D-A565-087850C19AF8}|SmartBoard\\SmartBoard.csproj|c:\\users\\b0ogor\\documents\\smartboard\\smartboard\\views\\windows\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{567AB3B4-92C7-4A9D-A565-087850C19AF8}|SmartBoard\\SmartBoard.csproj|solutionrelative:smartboard\\views\\windows\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{567AB3B4-92C7-4A9D-A565-087850C19AF8}|SmartBoard\\SmartBoard.csproj|c:\\users\\b0ogor\\documents\\smartboard\\smartboard\\models\\taskcardmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{567AB3B4-92C7-4A9D-A565-087850C19AF8}|SmartBoard\\SmartBoard.csproj|solutionrelative:smartboard\\models\\taskcardmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{567AB3B4-92C7-4A9D-A565-087850C19AF8}|SmartBoard\\SmartBoard.csproj|c:\\users\\b0ogor\\documents\\smartboard\\smartboard\\viewmodels\\pages\\homeboardviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{567AB3B4-92C7-4A9D-A565-087850C19AF8}|SmartBoard\\SmartBoard.csproj|solutionrelative:smartboard\\viewmodels\\pages\\homeboardviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{567AB3B4-92C7-4A9D-A565-087850C19AF8}|SmartBoard\\SmartBoard.csproj|c:\\users\\b0ogor\\documents\\smartboard\\smartboard\\logic\\cardmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{567AB3B4-92C7-4A9D-A565-087850C19AF8}|SmartBoard\\SmartBoard.csproj|solutionrelative:smartboard\\logic\\cardmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{567AB3B4-92C7-4A9D-A565-087850C19AF8}|SmartBoard\\SmartBoard.csproj|c:\\users\\b0ogor\\documents\\smartboard\\smartboard\\models\\boardcolumn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{567AB3B4-92C7-4A9D-A565-087850C19AF8}|SmartBoard\\SmartBoard.csproj|solutionrelative:smartboard\\models\\boardcolumn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 171,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 10,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HomeBoardPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\Views\\Pages\\HomeBoardPage.xaml.cs",
+              "RelativeDocumentMoniker": "SmartBoard\\Views\\Pages\\HomeBoardPage.xaml.cs",
+              "ToolTip": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\Views\\Pages\\HomeBoardPage.xaml.cs",
+              "RelativeToolTip": "SmartBoard\\Views\\Pages\\HomeBoardPage.xaml.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAlwB0AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-30T13:00:30.758Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "WorkspaceManager.cs",
+              "DocumentMoniker": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\logic\\WorkspaceManager.cs",
+              "RelativeDocumentMoniker": "SmartBoard\\logic\\WorkspaceManager.cs",
+              "ToolTip": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\logic\\WorkspaceManager.cs",
+              "RelativeToolTip": "SmartBoard\\logic\\WorkspaceManager.cs",
+              "ViewState": "AgIAAIUAAAAAAAAAAAAQwLIAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-30T17:07:27.226Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\Views\\Windows\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "SmartBoard\\Views\\Windows\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\Views\\Windows\\MainWindow.xaml.cs",
+              "RelativeToolTip": "SmartBoard\\Views\\Windows\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAxwEUAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-30T16:05:32.474Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProfileVeiwModel.cs",
+              "DocumentMoniker": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\ViewModels\\Pages\\ProfileVeiwModel.cs",
+              "RelativeDocumentMoniker": "SmartBoard\\ViewModels\\Pages\\ProfileVeiwModel.cs",
+              "ToolTip": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\ViewModels\\Pages\\ProfileVeiwModel.cs",
+              "RelativeToolTip": "SmartBoard\\ViewModels\\Pages\\ProfileVeiwModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-30T15:59:48.962Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CardManager.cs",
+              "DocumentMoniker": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\logic\\CardManager.cs",
+              "RelativeDocumentMoniker": "SmartBoard\\logic\\CardManager.cs",
+              "ToolTip": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\logic\\CardManager.cs",
+              "RelativeToolTip": "SmartBoard\\logic\\CardManager.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAQwFIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-30T14:42:22.862Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\Views\\Windows\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "SmartBoard\\Views\\Windows\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\Views\\Windows\\MainWindow.xaml",
+              "RelativeToolTip": "SmartBoard\\Views\\Windows\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-30T14:31:57.771Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TaskCard.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\Views\\model\\TaskCard.xaml.cs",
+              "RelativeDocumentMoniker": "SmartBoard\\Views\\model\\TaskCard.xaml.cs",
+              "ToolTip": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\Views\\model\\TaskCard.xaml.cs",
+              "RelativeToolTip": "SmartBoard\\Views\\model\\TaskCard.xaml.cs",
+              "ViewState": "AgIAAI8AAAAAAAAAAAAQwLcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-30T13:31:06.782Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TaskCard.xaml",
+              "DocumentMoniker": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\Views\\model\\TaskCard.xaml",
+              "RelativeDocumentMoniker": "SmartBoard\\Views\\model\\TaskCard.xaml",
+              "ToolTip": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\Views\\model\\TaskCard.xaml",
+              "RelativeToolTip": "SmartBoard\\Views\\model\\TaskCard.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-30T13:31:05.235Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "HomeBoardViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\ViewModels\\Pages\\HomeBoardViewModel.cs",
+              "RelativeDocumentMoniker": "SmartBoard\\ViewModels\\Pages\\HomeBoardViewModel.cs",
+              "ToolTip": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\ViewModels\\Pages\\HomeBoardViewModel.cs",
+              "RelativeToolTip": "SmartBoard\\ViewModels\\Pages\\HomeBoardViewModel.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAwwH4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-30T12:52:17.739Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HomeBoardPage.xaml",
+              "DocumentMoniker": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\Views\\Pages\\HomeBoardPage.xaml",
+              "RelativeDocumentMoniker": "SmartBoard\\Views\\Pages\\HomeBoardPage.xaml",
+              "ToolTip": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\Views\\Pages\\HomeBoardPage.xaml*",
+              "RelativeToolTip": "SmartBoard\\Views\\Pages\\HomeBoardPage.xaml*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-30T12:52:08.93Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "BoardColumn.cs",
+              "DocumentMoniker": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\Models\\BoardColumn.cs",
+              "RelativeDocumentMoniker": "SmartBoard\\Models\\BoardColumn.cs",
+              "ToolTip": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\Models\\BoardColumn.cs",
+              "RelativeToolTip": "SmartBoard\\Models\\BoardColumn.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-30T12:51:16.736Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TaskCardModel.cs",
+              "DocumentMoniker": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\Models\\TaskCardModel.cs",
+              "RelativeDocumentMoniker": "SmartBoard\\Models\\TaskCardModel.cs",
+              "ToolTip": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\Models\\TaskCardModel.cs",
+              "RelativeToolTip": "SmartBoard\\Models\\TaskCardModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-30T12:51:10.625Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
