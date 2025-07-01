@@ -30,7 +30,6 @@ namespace SmartBoard.Views.Pages
             DataContext = ViewModel;
             InitializeComponent();
             _mainWindow = Application.Current.MainWindow;
-            
             Loaded += async (s, e) => await ViewModel.LoadBoardAsync();
 
             _workspaceManager = new WorkspaceManager(
@@ -47,10 +46,9 @@ namespace SmartBoard.Views.Pages
                 _mainWindow,
                 _workspaceManager,
                 ViewModel);
-
             SetupEventHandlers();
 
-            _cardManager = new CardManager(ViewModel);
+            _cardManager = new CardManager(ViewModel); // Убедитесь, что ViewModel передан
         }
 
         private void SetupEventHandlers()
@@ -70,29 +68,19 @@ namespace SmartBoard.Views.Pages
         private void MainGrid_MouseMove(object sender, MouseEventArgs e) => _workspaceManager.HandleMouseMove(e);
         private async void Panel_Drop(object sender, DragEventArgs e)
         {
-            if (e.Data.GetData(typeof(TaskCardModel)) is TaskCardModel task)
+            if (sender is Border border && border.DataContext is BoardColumn targetColumn)
             {
-                if (sender is Border border && border.DataContext is BoardColumn targetColumn)
+                if (e.Data.GetData(typeof(TaskCardModel)) is TaskCardModel task)
                 {
-                    // Находим исходную колонку
                     var sourceColumn = ViewModel.Columns.FirstOrDefault(c => c.Tasks.Contains(task));
-
                     if (sourceColumn != null && sourceColumn != targetColumn)
                     {
-                        // Обновляем UI
                         sourceColumn.Tasks.Remove(task);
                         targetColumn.Tasks.Add(task);
-                        task.ColumnId = targetColumn.Id;
-
-                        // Обновляем БД
                         await ViewModel.UpdateTaskColumnAsync(task.Id, targetColumn.Id);
                     }
                 }
-            }
-            // Обработка шаблонов задач
-            else if (e.Data.GetData(typeof(TaskTemplate)) is TaskTemplate template)
-            {
-                if (sender is Border border && border.DataContext is BoardColumn targetColumn)
+                else if (e.Data.GetData(typeof(TaskTemplate)) is TaskTemplate template)
                 {
                     var newTask = new TaskCardModel
                     {
@@ -104,12 +92,10 @@ namespace SmartBoard.Views.Pages
                         Deadline = template.Deadline,
                         ColumnId = targetColumn.Id
                     };
-
                     await AddNewTask(targetColumn, newTask);
                 }
             }
         }
-
         private void ItemsControl_Drop(object sender, DragEventArgs e)
         {
             if (sender is ItemsControl itemsControl &&
@@ -129,35 +115,14 @@ namespace SmartBoard.Views.Pages
             return child as Border;
         }
 
-        private async void HandleDrop(DragEventArgs e, BoardColumn targetColumn)
+        private void Panel_DragLeave(object sender, DragEventArgs e)
         {
-            if (e.Data.GetData(typeof(TaskCardModel)) is TaskCardModel task)
+            if (sender is Border border)
             {
-                var sourceColumn = ViewModel.Columns.FirstOrDefault(c => c.Tasks.Contains(task));
-                if (sourceColumn != null && sourceColumn != targetColumn)
-                {
-                    sourceColumn.Tasks.Remove(task);
-                    targetColumn.Tasks.Add(task);
-                    task.ColumnId = targetColumn.Id;
-                    await ViewModel.UpdateTaskColumnAsync(task.Id, targetColumn.Id);
-                }
-            }
-            else if (e.Data.GetData(typeof(TaskTemplate)) is TaskTemplate template)
-            {
-                var newTask = new TaskCardModel
-                {
-                    Title = template.Title,
-                    Description = template.Description,
-                    TaskType = template.TaskType,
-                    Priority = template.Priority,
-                    Assignee = template.Assignee,
-                    Deadline = template.Deadline,
-                    ColumnId = targetColumn.Id
-                };
-                await AddNewTask(targetColumn, newTask);
+                border.BorderBrush = new SolidColorBrush(Color.FromArgb(32, 0, 0, 0));
+                border.BorderThickness = new Thickness(1);
             }
         }
-
         private void Panel_DragEnter(object sender, DragEventArgs e)
         {
             if (sender is Border border)
@@ -165,18 +130,9 @@ namespace SmartBoard.Views.Pages
                 if (e.Data.GetDataPresent(typeof(TaskCardModel)) ||
                     e.Data.GetDataPresent(typeof(TaskTemplate)))
                 {
-                    border.BorderBrush = new SolidColorBrush(Colors.DeepSkyBlue);
+                    border.BorderBrush = Brushes.DeepSkyBlue;
                     border.BorderThickness = new Thickness(2);
                 }
-            }
-        }
-
-        private void Panel_DragLeave(object sender, DragEventArgs e)
-        {
-            if (sender is Border border)
-            {
-                border.BorderBrush = new SolidColorBrush(Color.FromArgb(32, 0, 0, 0));
-                border.BorderThickness = new Thickness(1);
             }
         }
 
@@ -186,9 +142,14 @@ namespace SmartBoard.Views.Pages
                 e.Data.GetDataPresent(typeof(TaskTemplate)))
             {
                 e.Effects = DragDropEffects.Move;
-                e.Handled = true;
             }
+            else
+            {
+                e.Effects = DragDropEffects.None;
+            }
+            e.Handled = true;
         }
+
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
@@ -199,14 +160,6 @@ namespace SmartBoard.Views.Pages
         {
             base.OnMouseLeftButtonUp(e);
             _workspaceManager?.EndCardDrag();
-        }
-
-        private void Column_Drop(object sender, DragEventArgs e)
-        {
-            if (sender is Border border && border.DataContext is BoardColumn targetColumn)
-            {
-                _workspaceManager?.HandleCardDrop(targetColumn);
-            }
         }
 
         private void StartDragContainer(object sender, MouseButtonEventArgs e)
@@ -242,26 +195,64 @@ namespace SmartBoard.Views.Pages
         {
             _workspaceManager?.InitializeWorkspace();
         }
-
-        private async Task AddNewTask(BoardColumn column, TaskCardModel model)
+        public async Task HandleDrop(DragEventArgs e, BoardColumn targetColumn)
         {
-            using var conn = new NpgsqlConnection("Host=localhost;Username=postgres;Password=1;Database=postgres");
+            if (e.Data.GetData(typeof(TaskCardModel)) is TaskCardModel task)
+            {
+                // Перемещение существующей задачи
+                var sourceColumn = ViewModel.Columns.FirstOrDefault(c => c.Tasks.Contains(task));
+                if (sourceColumn != null && sourceColumn != targetColumn)
+                {
+                    sourceColumn.Tasks.Remove(task);
+                    targetColumn.Tasks.Add(task);
+                    await ViewModel.UpdateTaskColumnAsync(task.Id, targetColumn.Id);
+                }
+            }
+            else if (e.Data.GetData(typeof(TaskTemplate)) is TaskTemplate template)
+            {
+                // Создание новой задачи из шаблона
+                var newTask = new TaskCardModel
+                {
+                    Title = template.Title,
+                    Description = template.Description,
+                    TaskType = template.TaskType,
+                    Priority = template.Priority,
+                    Assignee = template.Assignee,
+                    Deadline = template.Deadline,
+                    ColumnId = targetColumn.Id
+                };
+                await AddNewTask(targetColumn, newTask);
+            }
+        }
+        public async Task AddNewTask(BoardColumn column, TaskCardModel model)
+        {
+            const string connString = "Host=localhost;Username=postgres;Password=1;Database=postgres";
+
+            using var conn = new NpgsqlConnection(connString);
             await conn.OpenAsync();
 
-            var cmd = new NpgsqlCommand(
-                "INSERT INTO public.tasks (title, description, type, priority, assignee, deadline, column_id) " +
-                "VALUES (@title, @description, @task_type, @priority, @assignee, @deadline, @column_id) RETURNING id",
-                conn);
+            const string sql = @"
+        INSERT INTO public.tasks 
+            (title, description, type, priority, assignee, deadline, column_id) 
+        VALUES 
+            (@title, @description, @task_type, @priority, @assignee, @deadline, @column_id) 
+        RETURNING id";
 
-            cmd.Parameters.AddWithValue("title", model.Title);
-            cmd.Parameters.AddWithValue("description", model.Description);
+            using var cmd = new NpgsqlCommand(sql, conn);
+
+            // Add parameters with proper null handling
+            cmd.Parameters.AddWithValue("title", model.Title ?? (object)DBNull.Value);
+            cmd.Parameters.AddWithValue("description", model.Description ?? (object)DBNull.Value);
             cmd.Parameters.AddWithValue("task_type", model.TaskType ?? (object)DBNull.Value);
             cmd.Parameters.AddWithValue("priority", model.Priority);
             cmd.Parameters.AddWithValue("assignee", model.Assignee ?? (object)DBNull.Value);
-            cmd.Parameters.AddWithValue("deadline", model.Deadline ?? (object)DBNull.Value);
+            cmd.Parameters.AddWithValue("deadline", model.Deadline.HasValue ? (object)model.Deadline.Value : DBNull.Value);
             cmd.Parameters.AddWithValue("column_id", column.Id);
 
+            // Execute and retrieve the new task's ID
             model.Id = (int)await cmd.ExecuteScalarAsync();
+
+            // Update ViewModel UI collection
             model.ColumnId = column.Id;
             column.Tasks.Add(model);
         }
@@ -284,6 +275,89 @@ namespace SmartBoard.Views.Pages
             await AddNewTask(column, newTask);
         }
 
+        private BoardColumn _draggedFromColumn;
+        private TaskCardModel _draggedTask;
+
+        private void Column_DragEnter(object sender, DragEventArgs e)
+        {
+            if (sender is Border border)
+            {
+                if (e.Data.GetDataPresent(typeof(TaskCardModel)) ||
+                    e.Data.GetDataPresent(typeof(TaskTemplate)))
+                {
+                    border.BorderBrush = Brushes.DeepSkyBlue;
+                    border.BorderThickness = new Thickness(2);
+                }
+            }
+        }
+
+        private void Column_DragLeave(object sender, DragEventArgs e)
+        {
+            if (sender is Border border)
+            {
+                border.BorderBrush = new SolidColorBrush(Color.FromArgb(32, 0, 0, 0));
+                border.BorderThickness = new Thickness(1);
+            }
+        }
+
+        private void Column_DragOver(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(typeof(TaskCardModel)) ||
+                e.Data.GetDataPresent(typeof(TaskTemplate)))
+            {
+                e.Effects = DragDropEffects.Move;
+            }
+            else
+            {
+                e.Effects = DragDropEffects.None;
+            }
+            e.Handled = true;
+        }
+
+        private async void Column_Drop(object sender, DragEventArgs e)
+        {
+            if (sender is Border border && border.DataContext is BoardColumn targetColumn)
+            {
+                // Обработка перетаскивания существующей задачи
+                if (e.Data.GetData(typeof(TaskCardModel)) is TaskCardModel task)
+                {
+                    await _cardManager.HandleTaskDrag(task, targetColumn);
+                }
+                // Обработка создания новой задачи из шаблона
+                else if (e.Data.GetData(typeof(TaskTemplate)) is TaskTemplate template)
+                {
+                    var newTask = await _cardManager.CreateTaskFromTemplate(template, targetColumn);
+                    // Дополнительная логика при необходимости
+                }
+
+                // Сброс выделения
+                border.BorderBrush = new SolidColorBrush(Color.FromArgb(32, 0, 0, 0));
+                border.BorderThickness = new Thickness(1);
+            }
+        }
+
+        private void Task_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (sender is FrameworkElement element && element.DataContext is TaskCardModel task)
+            {
+                _draggedFromColumn = ViewModel.Columns.FirstOrDefault(c => c.Tasks.Contains(task));
+                DragDrop.DoDragDrop(element, task, DragDropEffects.Move);
+                e.Handled = true;
+            }
+        }
+
+        private void Task_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetData(typeof(TaskCardModel)) is TaskCardModel)
+            {
+                e.Effects = DragDropEffects.Move;
+            }
+            else
+            {
+                e.Effects = DragDropEffects.None;
+            }
+            e.Handled = true;
+        }
 
     }
 }

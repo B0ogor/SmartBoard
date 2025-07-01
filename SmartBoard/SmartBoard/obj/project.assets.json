@@ -6051,11 +6051,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\SmartBoard.csproj",
+      "projectUniqueName": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\SmartBoard\\SmartBoard.csproj",
       "projectName": "SmartBoard",
-      "projectPath": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\SmartBoard.csproj",
+      "projectPath": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\SmartBoard\\SmartBoard.csproj",
       "packagesPath": "C:\\Users\\B0ogor\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\obj\\",
+      "outputPath": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\SmartBoard\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

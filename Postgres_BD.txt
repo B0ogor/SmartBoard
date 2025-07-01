@@ -1,0 +1,29 @@
+CREATE TABLE information_schema."columns" (
+	id serial4 NOT NULL,
+	"name" varchar(100) NULL
+);
+
+CREATE TABLE information_schema.tasks (
+	id serial4 NOT NULL,
+	title varchar(200) NULL,
+	description text NULL,
+	"type" varchar(50) NULL,
+	priority float8 NULL,
+	assignee varchar(100) NULL,
+	deadline date NULL,
+	column_id int4 NULL
+);
+
+INSERT INTO public."columns" ("name") VALUES
+	 ('Backlog'),
+	 ('Требует уточнения'),
+	 ('В работе'),
+	 ('Тестирование'),
+	 ('Анализ данных'),
+	 ('Техническое обслуживание'),
+	 ('Готово к релизу');
+
+INSERT INTO public.tasks (title,description,"type",priority,assignee,deadline,column_id) VALUES
+	 ('Приложение крашится при входе пользователя','После ввода логина и пароля происходит crash с ошибкой NullPointerException в AuthViewModel...','Bug',3.6,'Иван Петров','2025-04-10',1),
+	 ('Приложение крашится при входе пользователя','После ввода логина и пароля происходит crash с ошибкой NullPointerException в AuthViewModel...','Bug',3.6,'Иван Петров','2025-04-10',1);
+

@@ -59,81 +59,25 @@
                         <ui:SymbolIcon Symbol="GlanceDefault12" />
                     </ui:NavigationViewItem.Icon>
                     <ui:NavigationViewItem.MenuItems>
-                        <StackPanel
-                                x:Name="PAnel"
-                                Orientation="Vertical" Width="276">
-                            <local:TaskCard 
-                Title="Приложение крашится при входе пользователя" 
-                Description="После ввода логина и пароля происходит crash с ошибкой NullPointerException в AuthViewModel. Не воспроизводится локально, только на Android 12+. Требуется анализ логов Firebase."
-                TaskType="Bug"
-                Priority="3.6"
-                Assignee="Иван Петров"
-                Deadline="2025-04-10"
-                MouseLeftButtonDown="TaskCard_MouseLeftButtonDown" />
-
-                            <local:TaskCard 
-                Title="Добавить переключатель темы (Dark/Light)" 
-                Description="В настройках добавить возможность выбора между светлой и тёмной темой. Тему сохранять в SharedPreferences."
-                TaskType="Feature"
-                Priority="3.8"
-                Assignee="Ольга Смирнова"
-                Deadline="2025-04-15"
-                MouseLeftButtonDown="TaskCard_MouseLeftButtonDown" />
-
-                            <local:TaskCard 
-                Title="Рефакторинг модуля авторизации" 
-                Description="Убрать дублирование кода, разбить AuthManager на интерфейсы, вынести бизнес-логику из Activity. Проверить утечки памяти через LeakCanary."
-                TaskType="Technical Task"
-                Priority="4.2"
-                Assignee="Александр Иванов"
-                Deadline="2025-04-20"
-                MouseLeftButtonDown="TaskCard_MouseLeftButtonDown" />
-
-                            <local:TaskCard 
-                Title="Обновить документацию по REST API" 
-                Description="Добавить описание новых эндпоинтов: /v2/user/profile и /v2/notifications. Обновить примеры запросов и ответов в Swagger."
-                TaskType="Documentation"
-                Priority="2"
-                Assignee="Елена Кузнецова"
-                Deadline="2025-04-18"
-                MouseLeftButtonDown="TaskCard_MouseLeftButtonDown" />
-
-                            <local:TaskCard 
-                Title="Написать unit-тесты для CalculatorService" 
-                Description="Тестирование всех операций: сложение, вычитание, деление, умножение. Убедиться в покрытии всех граничных случаев."
-                TaskType="Testing"
-                Priority="3.8"
-                Assignee="Дмитрий Орлов"
-                Deadline="2025-04-22"
-                MouseLeftButtonDown="TaskCard_MouseLeftButtonDown" />
-
-                            <local:TaskCard 
-                Title="Ежедневный Standup" 
-                Description="Ежедневная встреча команды в 10:00 по МСК. Формат: что сделал, что делаю, какие блокеры."
-                TaskType="Meeting"
-                Priority="1"
-                Assignee="Вся команда"
-                Deadline="2025-04-20"
-                MouseLeftButtonDown="TaskCard_MouseLeftButtonDown" />
-
-                            <local:TaskCard 
-                Title="Оптимизация загрузки изображений" 
-                Description="Изображения в RecyclerView грузятся медленно, особенно на слабом интернете. Нужно использовать кэширование Glide + placeholder. Измерить время загрузки до и после."
-                TaskType="Performance"
-                Priority="3.5"
-                Assignee="Максим Лебедев"
-                Deadline="2025-04-25"
-                MouseLeftButtonDown="TaskCard_MouseLeftButtonDown" />
-
-                            <local:TaskCard 
-                Title="Добавить поддержку испанского языка" 
-                Description="Перевести все экраны, кнопки, сообщения. Проверить корректность отображения на устройствах с locale=es_ES. Добавить язык в настройки приложения."
-                TaskType="Localization"
-                Priority="4"
-                Assignee="Анастасия Романова"
-                Deadline="2025-04-30"
-                MouseLeftButtonDown="TaskCard_MouseLeftButtonDown" />
-                        </StackPanel>
+                        <ItemsControl ItemsSource="{Binding ViewModel.TaskTemplates}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Vertical" Width="276"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <local:TaskCard
+                    Title="{Binding Title}"
+                    Description="{Binding Description}"
+                    TaskType="{Binding TaskType}"
+                    Priority="{Binding Priority}"
+                    Assignee="{Binding Assignee}"
+                    Deadline="{Binding Deadline}"
+                    MouseLeftButtonDown="TaskCard_MouseLeftButtonDown" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
                     </ui:NavigationViewItem.MenuItems>
                 </ui:NavigationViewItem>
             </ui:NavigationView.MenuItems>

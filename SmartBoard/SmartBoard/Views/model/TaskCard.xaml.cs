@@ -161,16 +161,6 @@ namespace SmartBoard.Views.model
             _workspaceManager = manager;
         }
 
-        private BoardColumn FindParentColumn()
-        {
-            DependencyObject parent = VisualTreeHelper.GetParent(this);
-            while (parent != null && !(parent is Border border && border.DataContext is BoardColumn))
-            {
-                parent = VisualTreeHelper.GetParent(parent);
-            }
-
-            return (parent as Border)?.DataContext as BoardColumn;
-        }
         public void OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ButtonState == MouseButtonState.Pressed)

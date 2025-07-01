@@ -15,7 +15,7 @@ namespace SmartBoard.ViewModels.Pages
         private readonly SettingsViewModel _settings;
 
         [ObservableProperty]
-        private double containerWidth = 800;
+        private double containerWidth = 1200;
 
         [ObservableProperty]
         private double containerHeight = 400;

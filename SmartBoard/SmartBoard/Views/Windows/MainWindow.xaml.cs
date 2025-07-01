@@ -1,11 +1,12 @@
-﻿using SmartBoard.ViewModels.Windows;
+﻿using SmartBoard.Models;
+using SmartBoard.ViewModels.Windows;
+using SmartBoard.Views.model;
 using System.Windows.Controls;
 using System.Windows.Input;
 using Wpf.Ui;
 using Wpf.Ui.Abstractions;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
-using SmartBoard.Views.model;
 
 namespace SmartBoard.Views.Windows
 {
@@ -63,23 +64,20 @@ namespace SmartBoard.Views.Windows
         {
             throw new NotImplementedException();
         }
-
         private void TaskCard_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (sender is SmartBoard.Views.model.TaskCard card)
+            if (sender is FrameworkElement element && element.DataContext is TaskTemplate template)
             {
-                var template = new SmartBoard.Models.TaskTemplate
+                // Начать операцию перетаскивания
+                DragDrop.DoDragDrop(element, template, DragDropEffects.Move);
+
+                // Удалить шаблон из коллекции после успешного перетаскивания
+                if (DataContext is MainWindowViewModel viewModel)
                 {
-                    Title = card.Title,
-                    Description = card.Description,
-                    TaskType = card.TaskType,
-                    Priority = card.Priority,
-                    Assignee = card.Assignee,
-                    Deadline = card.Deadline
-                };
-                DragDrop.DoDragDrop(card, template, DragDropEffects.Copy);
-                e.Handled = true;
+                    viewModel.TaskTemplates.Remove(template);
+                }
             }
+            e.Handled = true;
         }
     }
 }

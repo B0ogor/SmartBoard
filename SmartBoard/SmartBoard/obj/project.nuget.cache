@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XO0nNgW1zeQ=",
+  "dgSpecHash": "EVA1+76WP8s=",
   "success": true,
-  "projectFilePath": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\SmartBoard.csproj",
+  "projectFilePath": "C:\\Users\\B0ogor\\Documents\\SmartBoard\\SmartBoard\\SmartBoard\\SmartBoard.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\B0ogor\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\B0ogor\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

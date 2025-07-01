@@ -10,57 +10,78 @@ namespace SmartBoard
 {
     public class CardManager
     {
-        private readonly Panel _cardPanel;
-        private readonly Panel _mainPanel;
         private readonly HomeBoardViewModel _viewModel;
         private readonly string _connectionString = "Host=localhost;Username=postgres;Password=1;Database=postgres";
-
-
-        public CardManager(Panel cardPanel, Panel mainPanel)
-        {
-            _cardPanel = cardPanel;
-            _mainPanel = mainPanel;
-        }
-
-        public void AddNewCard()
-        {
-            var card = new TaskCard
-            {
-                Title = "Новая задача",
-                Description = "Описание задачи",
-                TaskType = "Feature",
-                Priority = 5.0,
-                Assignee = "Александр Смирнов",
-                Deadline = DateTime.Today.AddDays(3)
-            };
-
-            _cardPanel.Children.Add(card);
-        }
 
         public CardManager(HomeBoardViewModel viewModel)
         {
             _viewModel = viewModel;
         }
 
-        public async Task HandleCardDrop(object sender, DragEventArgs e)
+        public async Task HandleTaskDrag(TaskCardModel task, BoardColumn targetColumn)
         {
-            if (e.Data.GetData(typeof(SmartBoard.Models.TaskCardModel)) is SmartBoard.Models.TaskCardModel task &&
-                sender is Border border &&
-                border.DataContext is BoardColumn targetColumn)
+            if (task == null || targetColumn == null) return;
+
+            var sourceColumn = _viewModel.Columns.FirstOrDefault(c => c.Tasks.Contains(task));
+
+            if (sourceColumn != null && sourceColumn != targetColumn)
             {
-                var sourceColumn = _viewModel.Columns
-                    .FirstOrDefault(c => c.Tasks.Contains(task));
+                // Удаление из исходной колонки
+                sourceColumn.Tasks.Remove(task);
 
-                if (sourceColumn != null)
-                {
-                    sourceColumn.Tasks.Remove(task);
-                    targetColumn.Tasks.Add(task);
-                    task.ColumnId = targetColumn.Id;
+                // Добавление в целевую колонку
+                targetColumn.Tasks.Add(task);
+                task.ColumnId = targetColumn.Id;
 
-                    await UpdateTaskColumnAsync(task.Id, targetColumn.Id);
-                }
+                // Обновление в БД
+                await UpdateTaskColumnAsync(task.Id, targetColumn.Id);
             }
         }
+
+        public async Task<TaskCardModel> CreateTaskFromTemplate(TaskTemplate template, BoardColumn targetColumn)
+        {
+            var newTask = new TaskCardModel
+            {
+                Title = template.Title,
+                Description = template.Description,
+                TaskType = template.TaskType,
+                Priority = template.Priority,
+                Assignee = template.Assignee,
+                Deadline = template.Deadline,
+                ColumnId = targetColumn.Id
+            };
+
+            await AddNewTaskToDatabase(newTask, targetColumn);
+            return newTask;
+        }
+
+        private async Task AddNewTaskToDatabase(TaskCardModel task, BoardColumn column)
+        {
+            using var conn = new NpgsqlConnection(_connectionString);
+            await conn.OpenAsync();
+
+            const string sql = @"
+        INSERT INTO public.tasks 
+            (title, description, type, priority, assignee, deadline, column_id) 
+        VALUES 
+            (@title, @description, @task_type, @priority, @assignee, @deadline, @column_id) 
+        RETURNING id";
+
+            using var cmd = new NpgsqlCommand(sql, conn);
+
+            cmd.Parameters.AddWithValue("title", (object)task.Title ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("description", (object)task.Description ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("task_type", (object)task.TaskType ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("priority", task.Priority);
+            cmd.Parameters.AddWithValue("assignee", (object)task.Assignee ?? DBNull.Value);
+            cmd.Parameters.AddWithValue("deadline", task.Deadline.HasValue
+                ? (object)task.Deadline.Value : DBNull.Value);
+            cmd.Parameters.AddWithValue("column_id", column.Id);
+
+            task.Id = (int)await cmd.ExecuteScalarAsync();
+            column.Tasks.Add(task);
+        }
+
 
         public async Task UpdateTaskColumnAsync(int taskId, int columnId)
         {

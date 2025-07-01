@@ -118,42 +118,46 @@
                                             <Grid Grid.Row="1" Margin="5,0,5,5">
                                                 <ItemsControl ItemsSource="{Binding Columns}">
                                                     <ItemsControl.ItemsPanel>
-            <ItemsPanelTemplate>
-                    <UniformGrid Rows="1"/>
-            </ItemsPanelTemplate>
-        </ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <UniformGrid Rows="1"/>
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
 
-        <ItemsControl.ItemContainerStyle>
-            <Style TargetType="ContentPresenter">
-                <Setter Property="Grid.Column" Value="{Binding Index}" />
-            </Style>
-        </ItemsControl.ItemContainerStyle>
-
-        <ItemsControl.ItemTemplate>
-            <DataTemplate>
-                <Border AllowDrop="True" DataContext="{Binding}" Drop="Panel_Drop" DragEnter="Panel_DragEnter" DragLeave="Panel_DragLeave" DragOver="Panel_DragOver" BorderBrush="#20000000" BorderThickness="1" Background="#10000000" Margin="5">
-                    <StackPanel HorizontalAlignment="Stretch">
-                        <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" FontWeight="Bold" Margin="0,5"/>
-                        <ItemsControl ItemsSource="{Binding Tasks}">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <task:TaskCard
-                                        DataContext="{Binding}"
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Border AllowDrop="True" 
+                    DataContext="{Binding}" 
+                    Drop="Column_Drop" 
+                    DragEnter="Column_DragEnter" 
+                    DragLeave="Column_DragLeave" 
+                    DragOver="Column_DragOver" 
+                    BorderBrush="#20000000" 
+                    BorderThickness="1" 
+                    Background="#10000000" 
+                    Margin="5">
+                                                                <StackPanel HorizontalAlignment="Stretch">
+                                                                    <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" FontWeight="Bold" Margin="0,5"/>
+                                                                    <ItemsControl ItemsSource="{Binding Tasks}"
+                            PreviewMouseLeftButtonDown="Task_PreviewMouseLeftButtonDown"
+                            DragEnter="Task_DragEnter">
+                                                                        <ItemsControl.ItemTemplate>
+                                                                            <DataTemplate>
+                                                                                <task:TaskCard
                                         Title="{Binding Title}"
                                         Description="{Binding Description}"
                                         TaskType="{Binding TaskType}"
                                         Priority="{Binding Priority}"
                                         Assignee="{Binding Assignee}"
                                         Deadline="{Binding Deadline}" />
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                    </StackPanel>
-                </Border>
-            </DataTemplate>
-        </ItemsControl.ItemTemplate>
-    </ItemsControl>
-</Grid>
+                                                                            </DataTemplate>
+                                                                        </ItemsControl.ItemTemplate>
+                                                                    </ItemsControl>
+                                                                </StackPanel>
+                                                            </Border>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </Grid>
                                         </Grid>
                                         <Thumb x:Name="ResizeThumb"
                                Width="10"
